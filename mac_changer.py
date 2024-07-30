@@ -17,23 +17,23 @@ def get_current_mac(interface):
     if mac_address_search_result:
         return mac_address_search_result.group(0)
     else:
-        print("MAC adresi alınamadı.")
+        print("Could not obtain MAC Address.")
         return None
 def main():
-    print("MAC Changer Başlatıldı.")
+    print("MAC Changer started.")
     (user_input, arguments) = get_user_input()
 
     current_mac = get_current_mac(user_input.interface)
-    print(f"Mevcut MAC Adresi: {current_mac}")
+    print(f"Current MAC Address: {current_mac}")
 
     change_mac(user_input.interface, user_input.mac_address)
 
     new_mac = get_current_mac(user_input.interface)
 
     if new_mac == user_input.mac_address:
-        print(f"{user_input.interface} arayüzü için MAC adresi {user_input.mac_address} olarak başarıyla değiştirildi.")
+        print(f"The MAC address for interface {user_input.interface} has been successfully changed to {user_input.mac_address}.")
     else:
-        print("MAC adresi değiştirilemedi.")
+        print("Could not change MAC Address.")
 
 
 if __name__ == "__main__":
